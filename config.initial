@@ -1,0 +1,32 @@
+{
+	"friendPub": {
+		"hops": 3
+	},
+	"gossip": {
+		"friends": true,
+		"global": true
+	},
+	"logging": {
+		"level": "info"
+	},
+    "allowPrivate":true,
+	"connections": {
+		"incoming": {
+			"net": [{
+					"scope": "public",
+					"external": ["${SSB_PUB_HOSTNAME}"],
+					"transform": "shs",
+					"port": ${SSB_PUB_PORT}
+				}
+			]
+		},
+		"outgoing": {
+			"net": [{
+				"transform": "shs"
+			}],
+			"onion": [{
+				"transform": "shs"
+			}]
+		}
+	}
+}

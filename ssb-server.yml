@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  ssb-server:
+
+    logging:
+      driver: json-file
+      options: 
+        max-size: "100M"
+        max-file: "10"
+
+    build: .
+    image: l-ra/ssb-server
+
+    restart: always
+
+    environment:
+      - SSB_PUB_HOSTNAME=ssb.pacov.city
+      - SSB_PUB_PORT=8008
+
+    volumes:
+      - ssb-data-ssb.pacov.city:/home/ssb/.ssb
+
+    ports:
+      - 8008:8008
+
+volumes:
+  ssb-data-ssb.pacov.city:
+    driver: local
+
+
